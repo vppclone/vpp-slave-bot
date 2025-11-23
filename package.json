@@ -1,0 +1,39 @@
+{
+  "name": "vppslave",
+  "version": "6.9.420",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "clean": "rimraf dist",
+    "dev": "nodemon",
+    "prebuild": "npm run clean",
+    "build": "swc src -d dist",
+    "lint": "eslint ./src",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.2.3",
+    "reflect-metadata": "^0.2.2",
+    "typedi": "^0.10.0"
+  },
+  "devDependencies": {
+    "@swc-node/register": "^1.8.0",
+    "@swc/cli": "^0.1.65",
+    "@swc/core": "^1.4.0",
+    "@types/node": "^20.11.17",
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "nodemonConfig": {
+    "ext": "*.ts",
+    "exec": "node -r @swc-node/register src/index.ts"
+  }
+}
